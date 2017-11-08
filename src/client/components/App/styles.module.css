@@ -1,0 +1,4 @@
+.app {
+  outline: 2px black solid;
+  display: flex;
+}
