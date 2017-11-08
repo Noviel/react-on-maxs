@@ -57,7 +57,7 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.24.1",
-    "eslint": "4.1.1",
+    "eslint": "^4.10.0",
     "eslint-config-dqnt": "^2.1.0",
     "flow-bin": "^0.57.3",
     "husky": "^0.14.3",
