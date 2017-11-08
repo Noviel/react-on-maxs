@@ -1,7 +1,7 @@
 {
   "name": "react-on-maxs",
   "version": "1.0.0",
-  "description": "React boilerplate with maximal capabilities and best practices",
+  "description": "React with modern development tools and best practices",
   "author": "Aleksandr Snov <snov.contact@gmail.com>",
   "main": "server/index.js",
   "license": "MIT",
