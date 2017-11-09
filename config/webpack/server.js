@@ -1,4 +1,4 @@
-const { basePreset } = require('webpack-features');
+const { presetReact } = require('webpack-features');
 const { server, common } = require('./config');
 
-module.exports = basePreset({ ...common, ...server });
+module.exports = presetReact({ ...common, ...server });

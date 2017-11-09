@@ -1,7 +1,7 @@
-const { basePreset } = require('webpack-features');
+const { presetReact } = require('webpack-features');
 const { client, common } = require('./config');
 
-module.exports = basePreset({
+module.exports = presetReact({
   ...common,
   ...client,
   production: false,
