@@ -13,6 +13,11 @@ import('./lib')
     console.log(e);
   });
 
+if (process.env.NODE_ENV !== 'production') {
+  const { whyDidYouUpdate } = require('why-did-you-update');
+  whyDidYouUpdate(React);
+}
+
 const rootElement = document.getElementById('app');
 
 const hotRender = element => {
@@ -25,10 +30,10 @@ if (window.ssr) {
   console.log('Got SSR data:', window.ssrData);
   hydrate(<App caption={window.ssrData} />, rootElement);
 } else {
-  console.log('No SSR data, assuming you are in dev env');
+  console.log('No SSR data...');
   hotRenderApp();
+}
 
-  if (module.hot) {
-    module.hot.accept('./components/App', hotRenderApp());
-  }
+if (module.hot) {
+  module.hot.accept('./components/App', hotRenderApp());
 }

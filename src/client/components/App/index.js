@@ -51,7 +51,7 @@ class App extends Component {
 
 const AppWithErrorBoundary = props => (
   <div className="global-app">
-    <h1>Hey ho</h1>
+    <h1>Hey!!</h1>
     <ErrorBoundary>
       <App {...props} />
     </ErrorBoundary>
