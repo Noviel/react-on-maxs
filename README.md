@@ -10,6 +10,16 @@
 1. Webpack configured by [webpack-features](https://github.com/Noviel/webpack-features)
 1. Slick development flow with hot reloading
 
+## Usage
+
+```sh
+git clone git@github.com:Noviel/react-on-maxs.git <YOUR_PROJECT_NAME>
+cd <YOUR_PROJECT_NAME>
+yarn install
+```
+
+Note that you will want to delete `.git` directory in the project's root and setup your own VCS probably.
+
 ## Scripts
 
 ### dev
