@@ -35,5 +35,5 @@ if (window.ssr) {
 }
 
 if (module.hot) {
-  module.hot.accept('./components/App', hotRenderApp());
+  module.hot.accept('./components/App', hotRenderApp);
 }
