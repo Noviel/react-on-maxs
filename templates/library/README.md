@@ -13,11 +13,12 @@
 ## Usage
 
 ```sh
-npm i react-on-maxs -g
-react-on-maxs
+git clone git@github.com:Noviel/react-on-maxs.git <YOUR_PROJECT_NAME>
+cd <YOUR_PROJECT_NAME>
+yarn install
 ```
 
-Answer a couple of questions and follow the instructions.
+Note that you will want to delete `.git` directory in the project's root and setup your own VCS probably.
 
 ## Scripts
 
