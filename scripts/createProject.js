@@ -1,8 +1,9 @@
+const path = require('path');
 const inquirer = require('inquirer');
 const ncp = require('ncp');
-const path = require('path');
+const replace = require('replace-in-file');
 
-const get = to => path.resolve(__dirname, to);
+const appDir = to => path.resolve(__dirname, to);
 const appendDirs = to => (...dirs) => path.join(to, ...dirs);
 const appendToCWD = appendDirs(process.cwd());
 
@@ -16,7 +17,7 @@ const questions = [
     type: 'list',
     name: 'projectType',
     message: 'What type of a project you are creating?',
-    choices: ['React Application', 'React Components Library'],
+    choices: ['React Application', 'React Library'],
     filter(val) {
       return val.toLowerCase();
     },
@@ -48,17 +49,40 @@ const finalMessage = ({
 
  yarn build:production`;
 
+const replacePlaceholders = ({ projectRoot, projectType, projectName }) => {
+  const manifestFile = appDir(
+    `../replaces/${projectType === 'react library' ? 'library' : 'application'}`
+  );
+  const replacesData = require(manifestFile);
+  if (replacesData['package.json']['PROJECT_NAME'] === undefined) {
+    replacesData['package.json']['PROJECT_NAME'] = projectName;
+  }
+
+  return Promise.all(
+    Object.keys(replacesData).map(k =>
+      replace({
+        disableGlobs: true,
+        files: path.resolve(projectRoot, k),
+        from: Object.keys(replacesData[k]),
+        to: Object.values(replacesData[k]),
+      })
+    )
+  );
+};
+
 inquirer.prompt(questions).then(answers => {
   const { projectType, projectName } = answers;
+  const projectRoot = appendToCWD(`${projectName}`);
 
-  if (projectType === 'react application') {
-    console.log('Preparing React Application');
-    copy(get('../templates/core'), appendToCWD(`${projectName}`))
-      .then(() => console.log(finalMessage({ projectName })))
-      .catch(err => console.error(err));
-  } else if (projectType === 'react components library') {
-    copy(get('../templates/library'), appendToCWD(`${projectName}`))
-      .then(() => console.log(finalMessage({ projectName })))
-      .catch(err => console.error(err));
-  }
+  const templateName = projectType === 'react application' ? 'core' : 'library';
+  const templateRoot = appDir(`../templates/${templateName}`);
+
+  const replacer = () => replacePlaceholders({ ...answers, projectRoot });
+
+  const message = finalMessage({ projectName });
+
+  copy(templateRoot, projectRoot)
+    .then(replacer)
+    .then(console.log(message))
+    .catch(err => console.error(err));
 });

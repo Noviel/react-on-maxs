@@ -6,7 +6,7 @@
   "main": "index.js",
   "license": "MIT",
   "engines": {
-    "node": ">=8.9.0"
+    "node": ">=8.6.0"
   },
   "bin": {
     "react-on-maxs": "./index.js"
@@ -15,7 +15,7 @@
     "test": "jest",
     "lint": "eslint scripts templates",
     "prettify": "yarn run prettier --write \"{config,scripts,templates}/**/*.js\"",
-    "precommit": "lint-staged && yarn lint && yarn test"
+    "precommit": "lint-staged && yarn lint"
   },
   "jest": {
     "rootDir": "",
@@ -35,7 +35,8 @@
   "dependencies": {
     "cross-env": "^5.1.1",
     "inquirer": "^4.0.0",
-    "ncp": "^2.0.0"
+    "ncp": "^2.0.0",
+    "replace-in-file": "^3.0.0"
   },
   "devDependencies": {
     "eslint": "^4.10.0",

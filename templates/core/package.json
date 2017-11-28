@@ -1,8 +1,7 @@
 {
   "name": "PROJECT_NAME",
   "version": "1.0.0",
-  "description": "React Application with modern development tools and best practices",
-  "author": "Aleksandr Snov <snov.contact@gmail.com>",
+  "description": "PROJECT_DESCRIPTION",
   "main": "server/index.js",
   "license": "MIT",
   "engines": {

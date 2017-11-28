@@ -1,8 +1,7 @@
 {
   "name": "PROJECT_NAME",
   "version": "1.0.0",
-  "description": "React Components Library with modern development tools and best practices",
-  "author": "Aleksandr Snov <snov.contact@gmail.com>",
+  "description": "PROJECT_DESCRIPTION",
   "main": "index.js",
   "license": "MIT",
   "engines": {
