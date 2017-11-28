@@ -33,17 +33,32 @@ const copy = (from, to, options = {}) =>
     });
   });
 
+const finalMessage = ({
+  projectName,
+}) => `You are almost here! Type the following:
+
+ cd ${projectName} 
+ yarn install
+
+ To start development:
+
+ yarn dev
+
+ To build for production:
+
+ yarn build:production`;
+
 inquirer.prompt(questions).then(answers => {
   const { projectType, projectName } = answers;
 
   if (projectType === 'react application') {
     console.log('Preparing React Application');
     copy(get('../templates/core'), appendToCWD(`${projectName}`))
-      .then(() => console.log('Done!'))
+      .then(() => console.log(finalMessage({ projectName })))
       .catch(err => console.error(err));
   } else if (projectType === 'react components library') {
     copy(get('../templates/library'), appendToCWD(`${projectName}`))
-      .then(() => console.log('Done!'))
+      .then(() => console.log(finalMessage({ projectName })))
       .catch(err => console.error(err));
   }
 });

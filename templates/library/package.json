@@ -1,17 +1,14 @@
 {
-  "name": "react-on-maxs",
+  "name": "PROJECT_NAME",
   "version": "1.0.0",
-  "description": "React with modern development tools and best practices",
+  "description": "React Components Library with modern development tools and best practices",
   "author": "Aleksandr Snov <snov.contact@gmail.com>",
-  "main": "server/index.js",
+  "main": "index.js",
   "license": "MIT",
   "engines": {
     "node": ">=8.9.0"
   },
   "scripts": {
-    "start": "cross-env NODE_ENV=production node server/index.js",
-    "start:dev": "cross-env-shell NODE_ENV=development \"yarn build:client && yarn build:server && nodemon server/index.js --watch server\"",
-    "dev": "cross-env-shell NODE_ENV=development HOT=true \"yarn build:server && node server/index.js\"",
     "test": "jest",
     "lint": "eslint src config",
     "type-check": "yarn run flow",
@@ -19,9 +16,7 @@
     "precommit": "lint-staged && yarn lint && yarn type-check && yarn test",
     "build:client": "webpack --config config/webpack/client.js",
     "build:production": "cross-env-shell NODE_ENV=production \"yarn build:client\"",
-    "watch:client": "yarn build:client -s-watch",
-    "watch": "yarn watch:client",
-    "cosmos": "cosmos --config config/cosmos.config.js",
+    "dev": "cosmos --config config/cosmos.config.js",
     "cosmos:export": "cosmos-export"
   },
   "jest": {
