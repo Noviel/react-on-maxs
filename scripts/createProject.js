@@ -1,4 +1,5 @@
 const path = require('path');
+const { platform } = require('os');
 const { exec } = require('child_process');
 const inquirer = require('inquirer');
 const ncp = require('ncp');
@@ -95,6 +96,7 @@ const replacePlaceholders = ({ projectRoot, projectType, projectName }) => {
 inquirer.prompt(questions).then(answers => {
   const { projectType, projectName } = answers;
   const projectRoot = appendToCWD(`${projectName}`);
+  const appRoot = appDir('../');
 
   const templateName = projectType === 'react application' ? 'core' : 'library';
   const templateRoot = appDir(`../templates/${templateName}`);
@@ -103,10 +105,15 @@ inquirer.prompt(questions).then(answers => {
 
   const postInstallMessage = createPostInstallMessage({ projectName });
 
+  const changeDiskCommand =
+    platform() === 'win32' && projectRoot[0] !== appRoot[0]
+      ? `${projectRoot[0]}: &&`
+      : '';
+
   copy(templateRoot, projectRoot)
     .then(replacer)
     .then(log(preInstallMessage))
-    .then(execute(`cd ${projectName} && yarn install`))
+    .then(execute(`${changeDiskCommand} cd ${projectRoot} && yarn install`))
     .then(log(postInstallMessage))
     .catch(err => console.error(err));
 });
