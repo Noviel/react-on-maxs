@@ -1,4 +1,5 @@
 const path = require('path');
+const { exec } = require('child_process');
 const inquirer = require('inquirer');
 const ncp = require('ncp');
 const replace = require('replace-in-file');
@@ -7,11 +8,33 @@ const appDir = to => path.resolve(__dirname, to);
 const appendDirs = to => (...dirs) => path.join(to, ...dirs);
 const appendToCWD = appendDirs(process.cwd());
 
+const log = message => () => console.log(message);
+
+const execute = (cmd, options) => () =>
+  new Promise((resolve, reject) => {
+    exec(cmd, options, (error, stdout, stderr) => {
+      if (error) {
+        console.log(`stderr: ${stderr}`);
+        console.error(`exec error: ${error}`);
+        reject(error);
+      } else {
+        console.log(`${stdout}`);
+        resolve();
+      }
+    });
+  });
+
 const questions = [
   {
     type: 'input',
     name: 'projectName',
     message: `What is your project's name?`,
+    validate(value) {
+      if (value.length) {
+        return true;
+      }
+      return "Please enter correct project's name";
+    },
   },
   {
     type: 'list',
@@ -34,20 +57,19 @@ const copy = (from, to, options = {}) =>
     });
   });
 
-const finalMessage = ({
+const preInstallMessage = `Installing dependencies... Don't worry, it may take a minute or two.\n`;
+
+const createPostInstallMessage = ({
   projectName,
-}) => `You are almost here! Type the following:
+}) => `You are almost here! Now you can go to ${projectName} directory and execute some commands:
 
- cd ${projectName} 
- yarn install
+ To start development: 
+  yarn dev
 
- To start development:
-
- yarn dev
-
- To build for production:
-
- yarn build:production`;
+ To build for production: 
+  yarn build:production
+  
+ Good Luck!`;
 
 const replacePlaceholders = ({ projectRoot, projectType, projectName }) => {
   const manifestFile = appDir(
@@ -79,10 +101,12 @@ inquirer.prompt(questions).then(answers => {
 
   const replacer = () => replacePlaceholders({ ...answers, projectRoot });
 
-  const message = finalMessage({ projectName });
+  const postInstallMessage = createPostInstallMessage({ projectName });
 
   copy(templateRoot, projectRoot)
     .then(replacer)
-    .then(console.log(message))
+    .then(log(preInstallMessage))
+    .then(execute(`cd ${projectName} && yarn install`))
+    .then(log(postInstallMessage))
     .catch(err => console.error(err));
 });
