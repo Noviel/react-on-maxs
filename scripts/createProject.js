@@ -98,8 +98,9 @@ inquirer.prompt(questions).then(answers => {
   const projectRoot = appendToCWD(`${projectName}`);
   const appRoot = appDir('../');
 
-  const templateName = projectType === 'react application' ? 'core' : 'library';
+  const templateName = projectType.split(' ')[1];
   const templateRoot = appDir(`../templates/${templateName}`);
+  const commonTemplateRoot = appDir(`../templates/common`);
 
   const replacer = () => replacePlaceholders({ ...answers, projectRoot });
 
@@ -110,7 +111,8 @@ inquirer.prompt(questions).then(answers => {
       ? `${projectRoot[0]}: &&`
       : '';
 
-  copy(templateRoot, projectRoot)
+  copy(commonTemplateRoot, projectRoot)
+    .then(() => copy(templateRoot, projectRoot))
     .then(replacer)
     .then(log(preInstallMessage))
     .then(
