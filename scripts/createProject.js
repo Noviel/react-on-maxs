@@ -34,13 +34,13 @@ const questions = [
       if (value.length) {
         return true;
       }
-      return "Please enter correct project's name";
+      return `Please enter correct project's name`;
     },
   },
   {
     type: 'list',
     name: 'projectType',
-    message: 'What type of a project you are creating?',
+    message: 'Select the type of your project',
     choices: ['React Application', 'React Library'],
     filter(val) {
       return val.toLowerCase();
@@ -113,7 +113,11 @@ inquirer.prompt(questions).then(answers => {
   copy(templateRoot, projectRoot)
     .then(replacer)
     .then(log(preInstallMessage))
-    .then(execute(`${changeDiskCommand} cd ${projectRoot} && yarn install`))
+    .then(
+      execute(
+        `${changeDiskCommand} cd ${projectRoot} && yarn install && yarn add webpack-features@^3.2.0`
+      )
+    )
     .then(log(postInstallMessage))
     .catch(err => console.error(err));
 });
