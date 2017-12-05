@@ -34,12 +34,8 @@
     ]
   },
   "dependencies": {
-    "commander": "^2.11.0",
     "cross-env": "^5.1.1",
     "emotion": "^8.0.9",
-    "express": "^4.16.2",
-    "inquirer": "^3.3.0",
-    "ramda": "^0.25.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-emotion": "^8.0.9"
@@ -52,8 +48,6 @@
     "husky": "^0.14.3",
     "jest": "^21.2.1",
     "lint-staged": "^4.3.0",
-    "nodemon": "^1.12.1",
-    "npm-run-all": "^4.1.1",
     "preload-webpack-plugin": "^2.0.0",
     "prettier": "1.7.4",
     "react-cosmos": "^3.0.0",
