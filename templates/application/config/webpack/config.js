@@ -3,7 +3,7 @@ const { root } = require('../paths');
 module.exports = {
   common: {
     rootPath: root,
-    cssPreprocessor: 'scss',
+    cssPreprocessors: ['scss'],
     emotion: true,
   },
   client: {

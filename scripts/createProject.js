@@ -117,7 +117,7 @@ inquirer.prompt(questions).then(answers => {
     .then(log(preInstallMessage))
     .then(
       execute(
-        `${changeDiskCommand} cd ${projectRoot} && yarn install && yarn add webpack-features@^3.2.10 --dev`
+        `${changeDiskCommand} cd ${projectRoot} && yarn install && yarn add webpack-features@^3.4.7 --dev`
       )
     )
     .then(log(postInstallMessage))

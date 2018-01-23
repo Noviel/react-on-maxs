@@ -4,7 +4,7 @@ module.exports = {
   rootPath: root,
   publicPath: './',
   distPath: 'dist',
-  cssPreprocessor: 'scss',
+  cssPreprocessors: ['scss'],
   emotion: true,
   entry: './src/index.js',
   template: false,
