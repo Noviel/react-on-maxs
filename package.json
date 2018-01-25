@@ -15,7 +15,7 @@
     "test": "jest",
     "lint": "eslint scripts templates",
     "prettify": "yarn run prettier --write \"{config,scripts,templates}/**/*.js\"",
-    "precommit": "lint-staged && yarn lint"
+    "precommit": "./node_modules/.bin/lint-staged && yarn lint"
   },
   "jest": {
     "rootDir": "",
@@ -43,7 +43,7 @@
     "eslint-config-dqnt": "^2.1.0",
     "husky": "^0.14.3",
     "jest": "^21.2.1",
-    "lint-staged": "^6.0.0",
+    "lint-staged": "^6.0.1",
     "prettier": "1.7.4"
   }
 }
