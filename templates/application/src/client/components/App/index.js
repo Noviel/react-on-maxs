@@ -7,7 +7,7 @@ import styles from './styles.module.css';
 import webpackLogo from '../../../../static/webpack-logo.jpg';
 import reactLogo from './img/react-logo.png';
 
-import Header from '../HeaderWithSCSS';
+import Header from '../Header';
 
 const Container = styled.div`
   background: #fb2;

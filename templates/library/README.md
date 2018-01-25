@@ -3,7 +3,7 @@
 ## Features
 
 1. Modern javascript (ES6+)
-1. Styles: CSS Modules, Scss, [emotion](https://github.com/emotion-js/emotion)
+1. Styles: CSS Modules, [emotion](https://github.com/emotion-js/emotion)
 1. Best code practices enforced by Eslint
 1. Code formatting by Prettier
 1. Types checking with Flow
