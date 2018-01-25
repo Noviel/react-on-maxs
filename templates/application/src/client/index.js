@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from 'react';
 import { render, hydrate } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
@@ -12,11 +13,6 @@ import('./lib')
   .catch(e => {
     console.log(e);
   });
-
-if (process.env.NODE_ENV !== 'production') {
-  const { whyDidYouUpdate } = require('why-did-you-update');
-  whyDidYouUpdate(React);
-}
 
 const rootElement = document.getElementById('app');
 

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const path = require('path');
 const { platform } = require('os');
 const { exec } = require('child_process');
@@ -115,11 +116,7 @@ inquirer.prompt(questions).then(answers => {
     .then(() => copy(templateRoot, projectRoot))
     .then(replacer)
     .then(log(preInstallMessage))
-    .then(
-      execute(
-        `${changeDiskCommand} cd ${projectRoot} && yarn install && yarn add webpack-features@^3.4.7 --dev`
-      )
-    )
+    .then(execute(`${changeDiskCommand} cd ${projectRoot} && yarn install`))
     .then(log(postInstallMessage))
     .catch(err => console.error(err));
 });
