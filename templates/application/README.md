@@ -28,11 +28,11 @@ Command for realtime development of a client. It launches a server with hot relo
 
 Note: server side rendering is **disabled** in this mode.
 
-### start:dev
+### dev:server
 
-Command for server-side development. It builds the code and launches a server in development mode, which means you will be able to test server side features and see errors and warnings from the libraries.  It can be used along side with `watch` launched in parallel for an automatically server restarting on the code updates.
+Command for server-side development. It launches the server in development mode, which means you will be able to test server side features and see errors and warnings from the libraries. It **should be used along side with `watch`** script launched in parallel for an automatic server restart on the code updates.
 
-Note: you should manually reload browser's page after update of the client bundle while using `watch`.
+Note: you should manually reload browser's page after update of the client bundle.
 
 ### watch:server
 

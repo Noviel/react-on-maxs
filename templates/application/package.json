@@ -9,8 +9,8 @@
   },
   "scripts": {
     "start": "cross-env NODE_ENV=production node server/index.js",
-    "start:dev": "cross-env-shell NODE_ENV=development \"yarn build:client && yarn build:server && nodemon server/index.js --watch server\"",
     "dev": "cross-env-shell NODE_ENV=development HOT=true \"yarn build:server && node server/index.js\"",
+    "dev:server": "nodemon server/index.js --watch server",
     "test": "jest",
     "lint": "eslint src config",
     "type-check": "yarn run flow",
