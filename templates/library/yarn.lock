@@ -7408,9 +7408,9 @@ webpack-dev-middleware@^1.12.0:
     range-parser "^1.0.3"
     time-stamp "^2.0.0"
 
-webpack-features@^3.5.1:
-  version "3.5.1"
-  resolved "https://registry.yarnpkg.com/webpack-features/-/webpack-features-3.5.1.tgz#0520225354dbcdcc4f66ef5cf393b0c1ad2dc311"
+webpack-features@^3.5.2:
+  version "3.5.2"
+  resolved "https://registry.yarnpkg.com/webpack-features/-/webpack-features-3.5.2.tgz#9ceab03be247c0e782fc5e9285c67602847694b3"
   dependencies:
     "@babel/core" "^7.0.0-beta.38"
     "@babel/plugin-proposal-class-properties" "^7.0.0-beta.38"
